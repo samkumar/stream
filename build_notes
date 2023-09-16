@@ -1,0 +1,13 @@
+Here the build procedure that works for me (based on comments in the source and the website, https://www.cs.virginia.edu/stream).
+
+To build 100M version:
+gcc -O -DSTREAM_ARRAY_SIZE=100000000 stream.c -o stream.100M
+
+To build with OpenMP support (for using multiple threads):
+gcc -O -DSTREAM_ARRAY_SIZE=100000000 -fopenmp -D_OPENMP stream.c -o stream.100M.openmp
+
+Then you can run with 8 threads using:
+OMP_NUM_THREADS=8 ./stream.100M.openmp
+
+Make sure you see these lines in the output:
+Number of Threads requested = 8
